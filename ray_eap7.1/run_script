@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -ti  --name epos_ap1 -v ~/Documents/Docker_Share:/Docker_Share -p 8180:8080 -p 10990:9990 --link epos_db:epos_db rayho8224/eap7.1 /bin/bash
