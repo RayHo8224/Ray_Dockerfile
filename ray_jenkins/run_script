@@ -1,1 +1,1 @@
-docker run --name ray_jenkins -v ~/Documents/Docker_Share:/Docker_Share  -v ~/Documents/jenkins_home:/var/jenkins_home -p 8999:8080 --link epos_ap1:epos_ap1 rayho8224/jenkins
+docker run --name ray_jenkins -v ~/Documents/Docker_Share:/Docker_Share  -v ~/Documents/Docker_Share/jenkins_home:/var/jenkins_home -p 8999:8080 --link epos_ap1:epos_ap1 --link ray_maven:ray_maven rayho8224/jenkins

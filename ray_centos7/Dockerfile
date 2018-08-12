@@ -15,11 +15,17 @@ RUN yum install -y openssh-server openssh-clients
 
 #install openjdk8 & setting ENV
 RUN yum install -y java-1.8.0-openjdk-devel
-ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
-ENV PATH=$JAVA_HOME/bin:$PATH
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk" >> ~/.bashrc
+#####ENV JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+#####ENV PATH=$JAVA_HOME/bin:$PATH
 
 #install maven3.5.4 & setting ENV
 COPY apache-maven-3.5.4-bin.zip /opt/
 RUN unzip /opt/apache-maven-3.5.4-bin.zip -d /opt
 RUN rm -f /opt/apache-maven-3.5.4-bin.zip
-ENV PATH=/opt/apache-maven-3.5.4/bin:$PATH
+#####ENV PATH=/opt/apache-maven-3.5.4/bin:$PATH
+
+#setting $PATH
+RUN echo "export PATH=/opt/apache-maven-3.5.4/bin:/usr/lib/jvm/java-1.8.0-openjdk/bin:$PATH" >> ~/.bashrc
+
+
