@@ -12,6 +12,8 @@ RUN yum install -y unzip
 
 #install ssh
 RUN yum install -y openssh-server openssh-clients
+RUN mkdir /var/run/sshd
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' 
 
 #install openjdk8 & setting ENV
 RUN yum install -y java-1.8.0-openjdk-devel
@@ -28,4 +30,12 @@ RUN rm -f /opt/apache-maven-3.5.4-bin.zip
 #setting $PATH
 RUN echo "export PATH=/opt/apache-maven-3.5.4/bin:/usr/lib/jvm/java-1.8.0-openjdk/bin:$PATH" >> ~/.bashrc
 
+#install supervisor
+RUN yum install -y python-setuptools  
+RUN easy_install supervisor  
+RUN mkdir -p /var/log/supervisor
+
+#startup supervisord
+COPY supervisord.conf /etc/supervisord.conf  
+CMD ["/usr/bin/supervisord"]  
 
