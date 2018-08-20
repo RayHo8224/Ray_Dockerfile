@@ -1,1 +1,1 @@
-docker run -d  --name epos_jboss1 -v ~/Documents/Docker_Share:/Docker_Share -p 8180:8080 -p 10990:9990 --link epos_db:epos_db
+docker run -d  --name ${name} -v ~/Documents/Docker_Share:/Docker_Share -p 8180:8080 -p 10990:9990 --link epos_db:epos_db 

@@ -1,0 +1,1 @@
+docker run -d  --name ${name} -v ~/Documents/Docker_Share:/Docker_Share rayho8224/centos
